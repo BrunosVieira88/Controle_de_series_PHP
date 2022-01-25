@@ -38,3 +38,6 @@ Route::get('/sair', function () {
     Auth::logout();
     return redirect('/entrar');
 });
+Route::get('/mail', function(){
+    return new Mail\NovaSerie('GOT','8','10');
+});
