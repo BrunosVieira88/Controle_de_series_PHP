@@ -3,6 +3,7 @@ namespace App;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,4 +41,17 @@ Route::get('/sair', function () {
 });
 Route::get('/mail', function(){
     return new Mail\NovaSerie('GOT','8','10');
+});
+
+Route::get('/enviarMail', function(){
+
+    $email= new Mail\NovaSerie('GOT','8','10');
+    $user = (object)[
+        'email'=>'bruno@tantofaz.com',
+        'name'=>'Brunão das Massas'
+    ];
+    \Illuminate\Support\Facades\Mail::to($user)->send($email);
+
+    return redirect('/mail');
+   
 });

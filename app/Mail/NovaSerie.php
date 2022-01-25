@@ -35,4 +35,5 @@ class NovaSerie extends Mailable
     {
         return $this->view('mail.serie.nova_serie');
     }
+
 }
