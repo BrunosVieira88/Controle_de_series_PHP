@@ -11,7 +11,7 @@
     @csrf
     <div class="row">
         <div class="col-md-6">
-                <label for="nome">Nome</label>
+            <label for="nome">Nome</label>
             <input type="text" class="form-control" required name="nome" id="nome">
         </div>
         <div class="col-md-3">
@@ -23,7 +23,13 @@
             <input type="number" class="form-control" required name="ep_por_temporada" id="ep_por_temporada">
         </div>
     </div>
-
+    <div class="row mt-2">
+        <div class="col-md-6">
+            <label for="foto">Insira sua foto</label>
+            <input type="text" class="form-control" name="foto" id="foto">
+        </div>
+    </div>
+    
     <button class="btn btn-primary mt-2">Adicionar</button>
 </form>
 @endsection

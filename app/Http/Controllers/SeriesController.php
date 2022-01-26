@@ -29,11 +29,12 @@ class SeriesController extends Controller
     {
         return view('series.create');
     }
-
+    
     public function store(
         SeriesFormRequest $request,
         CriadorDeSerie $criadorDeSerie
     ) {
+        dd($request->all());
         $serie = $criadorDeSerie->criarSerie(
             ucfirst($request->nome),
             ucfirst($request->qtd_temporadas),
