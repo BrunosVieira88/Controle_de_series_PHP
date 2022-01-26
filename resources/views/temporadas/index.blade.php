@@ -1,7 +1,16 @@
 @extends('layout')
 
 @section('cabecalho')
-    Temporadas de {{ $serie->nome }}
+<div class="">
+    @if (!$serie->foto_url)
+   
+            <a href="{{$serie->foto_url}}" target="blanck">
+                <img src="{{$serie->foto_url}}" alt="Imagem da serie" class="img-thumbnail tamanho_imagem_grande" >
+            </a>
+            
+    @endif
+    <span id="nome-serie-{{ $serie->id }}">{{ $serie->nome }}</span>
+</div> 
 @endsection
 
 @section('conteudo')

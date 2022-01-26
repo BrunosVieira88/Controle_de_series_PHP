@@ -34,11 +34,16 @@ class SeriesController extends Controller
         SeriesFormRequest $request,
         CriadorDeSerie $criadorDeSerie
     ) {
-        dd($request->all());
+        $foto =null; 
+        if($request->hasFile('foto')){
+            $foto= $request->file('foto')->store('serie');
+        }
+
         $serie = $criadorDeSerie->criarSerie(
             ucfirst($request->nome),
             ucfirst($request->qtd_temporadas),
-            ucfirst($request->ep_por_temporada)
+            ucfirst($request->ep_por_temporada),
+            $foto
         );
 
         $request->session()

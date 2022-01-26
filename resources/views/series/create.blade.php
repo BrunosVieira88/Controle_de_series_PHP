@@ -7,7 +7,7 @@
 @section('conteudo')
 @include('erros', ['errors' => $errors])
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-md-6">
@@ -26,7 +26,7 @@
     <div class="row mt-2">
         <div class="col-md-6">
             <label for="foto">Insira sua foto</label>
-            <input type="text" class="form-control" name="foto" id="foto">
+            <input type="file" class="form-control" name="foto" id="foto">
         </div>
     </div>
     

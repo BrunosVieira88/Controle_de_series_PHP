@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\{Serie, Temporada, Episodio};
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class RemovedorDeSerie
 {
@@ -25,9 +26,13 @@ class RemovedorDeSerie
      */
     private function removerTemporadas(Serie $serie): void
     {
+        if($serie->foto){
+            Storage::delete($serie->foto);
+        }
         $serie->temporadas->each(function (Temporada $temporada) {
             $this->removerEpisodios($temporada);
             $temporada->delete();
+           
         });
     }
 

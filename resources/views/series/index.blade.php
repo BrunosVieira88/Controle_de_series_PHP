@@ -13,7 +13,12 @@ Séries
 <ul class="list-group mb-5">
     @foreach($series as $serie)
     <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span id="nome-serie-{{ $serie->id }}">{{ $serie->nome }}</span>
+
+        <div>
+            <img src="{{$serie->foto_url}}" alt="Imagem da serie" class="img-thumbnail tamanho_imagem" >
+            <span id="nome-serie-{{ $serie->id }}">{{ $serie->nome }}</span>
+        </div>
+       
        
         @auth
         <div class="input-group w-50" hidden id="input-nome-serie-{{ $serie->id }}">
