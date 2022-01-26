@@ -46,12 +46,13 @@ Route::get('/mail', function(){
 Route::get('/enviarMail', function(){
 
     $email= new Mail\NovaSerie('GOT','8','10');
+    $email->subject ="Nova Serie Adicionada!";
     $user = (object)[
-        'email'=>'bruno@tantofaz.com',
+        'email'=>'brunosvtwo@gmail.com',
         'name'=>'Brunão das Massas'
     ];
     \Illuminate\Support\Facades\Mail::to($user)->send($email);
 
-    return redirect('/mail');
+    return "email enviado!";
    
 });
