@@ -8,7 +8,21 @@
     <title>Controle de Séries</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url(mix('site/css/style.css'))}}">
+    <style>
+        .arredonda{
+            border-radius: 35px;
+            box-shadow: 1px 1px 3px black;
+        }
+        ul{
+            list-style-type: none;
+        }
+        .alerta{
+            font-size: 18px;
+            font-weight: bolder;
+         
+        }
+ 
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2 justify-content-between">
@@ -31,4 +45,13 @@
     </div>
 </body>
 </html>
-<script src="{{url(mix('site/js/script.js'))}}"></script>
+<script>
+    setTimeout(function(){
+ 
+     var a = document.getElementById("msg-sucess");
+     console.log(a);
+     a.style="display:none"
+ 
+ 
+ }, 10000);
+ </script>
