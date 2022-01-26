@@ -34,7 +34,10 @@ class SeriesController extends Controller
         SeriesFormRequest $request,
         CriadorDeSerie $criadorDeSerie
     ) {
+<<<<<<< HEAD
         //dd($request->all());
+=======
+>>>>>>> parent of f7a380f (commit)
         $serie = $criadorDeSerie->criarSerie(
             ucfirst($request->nome),
             ucfirst($request->qtd_temporadas),
