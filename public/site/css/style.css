@@ -1,0 +1,18 @@
+*{
+    padding: 0;
+    text-decoration:none;
+}
+.arredonda{
+    border-radius: 35px;
+    box-shadow: 1px 1px 3px black;
+}
+ul{
+    list-style-type: none;
+}
+.alerta{
+    font-size: 18px;
+    font-weight: bolder; 
+}
+h1{
+    text-transform: uppercase;
+}

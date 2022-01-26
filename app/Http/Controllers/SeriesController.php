@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Episodio;
-use App\Http\Requests\SeriesFormRequest;
 use App\Serie;
-use App\Services\CriadorDeSerie;
-use App\Services\RemovedorDeSerie;
+use App\Episodio;
 use App\Temporada;
 use Illuminate\Http\Request;
+use App\Services\CriadorDeSerie;
+use App\Services\RemovedorDeSerie;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SeriesFormRequest;
 
 class SeriesController extends Controller
 {
@@ -34,9 +35,9 @@ class SeriesController extends Controller
         CriadorDeSerie $criadorDeSerie
     ) {
         $serie = $criadorDeSerie->criarSerie(
-            $request->nome,
-            $request->qtd_temporadas,
-            $request->ep_por_temporada
+            ucfirst($request->nome),
+            ucfirst($request->qtd_temporadas),
+            ucfirst($request->ep_por_temporada)
         );
 
         $request->session()
@@ -45,14 +46,20 @@ class SeriesController extends Controller
                 "Série {$serie->nome} e suas temporadas e episódios criados com sucesso "
             );
 
-            $email= new \App\Mail\NovaSerie(
-                $request->nome,
-                $request->qtd_temporadas,
-                $request->ep_por_temporada
-            );
-            $email->subject ="Nova Serie Adicionada {$serie->nome}!";
-            $user =$request-> user();
-            \Illuminate\Support\Facades\Mail::to($user)->send($email);
+           
+           
+           
+            $users = User::all();
+            foreach ($users as $user) {
+                $email= new \App\Mail\NovaSerie(
+                    $request->nome,
+                    $request->qtd_temporadas,
+                    $request->ep_por_temporada
+                );
+                $email->subject ="Nova Série Adicionada {$serie->nome}!";
+                \Illuminate\Support\Facades\Mail::to($user)->queue($email);
+            }
+           
 
 
         return redirect()->route('listar_series');
