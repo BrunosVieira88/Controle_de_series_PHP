@@ -11,10 +11,10 @@ class CriadorDeSerie
         string $nomeSerie,
         int $qtdTemporadas,
         int $epPorTemporada,
-        string $foto
+        ?string $foto
     ): Serie {
         DB::beginTransaction();
-        $serie = Serie::create(['nome' => $nomeSerie]);
+        $serie = Serie::create(['nome' => $nomeSerie , 'foto'=> $foto]);
         $this->criaTemporadas($qtdTemporadas, $epPorTemporada, $serie,$foto);
         DB::commit();
 
